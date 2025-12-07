@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Thành Viên</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Menu -->
+        <nav class="main-nav">
+            <div class="nav-logo">
+                <img src="wrap to web/logo/Logo.png" alt="Logo" class="logo-img">
+            </div>
+            <ul class="nav-list">
+                <li><a href="#" class="nav-link active" data-tab="home">Trang chủ</a></li>
+                <li><a href="#" class="nav-link" data-tab="members">Thành viên</a></li>
+                <li><a href="#" class="nav-link" data-tab="products">Sản phẩm</a></li>
+                <li><a href="#" class="nav-link" data-tab="progress">Tiến độ</a></li>
+                <li><a href="#" class="nav-link" data-tab="documents">Biên bản</a></li>
+            </ul>
+        </nav>
+
+        <!-- Home Page Section -->
+        <section id="home-section" class="content-section active">
+            <header class="header">
+                <div class="header-logo">
+                    <img src="wrap to web/logo/Logo.png" alt="Logo" class="logo-img-large">
+                </div>
+                <h1 class="header-title">Chào Mừng Đến Với Dự Án Của Chúng Tôi</h1>
+                <p class="header-subtitle">Khám phá sản phẩm và đội ngũ của chúng tôi</p>
+            </header>
+
+            <!-- Main Timeline Section: Sản phẩm - Biên bản - Tiến độ -->
+            <div class="home-timeline-section">
+                <h2 class="section-title">Dự Án Của Chúng Tôi</h2>
+                
+                <!-- Timeline Item 1: Sản phẩm -->
+                <div class="home-timeline-item" onclick="switchToTab('products')">
+                    <div class="home-timeline-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div class="home-timeline-content">
+                        <div class="home-timeline-number">01</div>
+                        <h3 class="home-timeline-title">Sản Phẩm</h3>
+                        <p class="home-timeline-description">
+                            Logo, Poster và Video dự án - Những sản phẩm được tạo ra bởi nhóm
+                        </p>
+                        <div class="home-timeline-preview">
+                            <div class="home-preview-grid">
+                                <div class="home-preview-item">
+                                    <img src="wrap to web/logo/Logo.png" alt="Logo" onclick="event.stopPropagation(); openProductImageModal('wrap to web/logo/Logo.png')">
+                                </div>
+                                <div class="home-preview-item">
+                                    <img src="images/Poster.jpg" alt="Poster" onclick="event.stopPropagation(); openProductImageModal('images/Poster.jpg')">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('products'); return false;">
+                            Xem chi tiết <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2: Biên bản -->
+                <div class="home-timeline-item" onclick="switchToTab('documents')">
+                    <div class="home-timeline-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="home-timeline-content">
+                        <div class="home-timeline-number">02</div>
+                        <h3 class="home-timeline-title">Biên Bản</h3>
+                        <p class="home-timeline-description">
+                            Các biên bản họp nhóm và tài liệu kế hoạch dự án
+                        </p>
+                        <div class="home-timeline-preview">
+                            <div class="home-documents-preview">
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Biên bản họp lần 1</span>
+                                </div>
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-file-word"></i>
+                                    <span>Biên bản họp lần 2-6</span>
+                                </div>
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Tài liệu kế hoạch</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('documents'); return false;">
+                            Xem chi tiết <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3: Tiến độ -->
+                <div class="home-timeline-item" onclick="switchToTab('progress')">
+                    <div class="home-timeline-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="home-timeline-content">
+                        <div class="home-timeline-number">03</div>
+                        <h3 class="home-timeline-title">Tiến Độ</h3>
+                        <p class="home-timeline-description">
+                            Theo dõi tiến độ dự án, phân công công việc và hình ảnh họp nhóm
+                        </p>
+                        <div class="home-timeline-preview">
+                            <div class="home-progress-preview">
+                                <div class="home-progress-item">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>Bảng phân công</span>
+                                </div>
+                                <div class="home-progress-item">
+                                    <i class="fas fa-chart-gantt"></i>
+                                    <span>Gantt Chart</span>
+                                </div>
+                                <div class="home-progress-item">
+                                    <i class="fas fa-images"></i>
+                                    <span>Hình ảnh họp nhóm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('progress'); return false;">
+                            Xem chi tiết <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Members Page Section -->
+        <section id="members-section" class="content-section">
+            <header class="header">
+                <h1 class="header-title">Đội Ngũ Của Chúng Tôi</h1>
+                <p class="header-subtitle">Những con người tài năng đằng sau thành công</p>
+            </header>
+
+            <div class="team-grid">
+            <!-- Member 1 -->
+            <div class="team-card" 
+                 data-name="Nguyễn Minh Khôi"
+                 data-role="Leader"
+                 data-description="Thích chơi game, du lịch"
+                 data-email="nmkhoi2512@clc.fitus.edu.vn"
+                 data-id="25127388"
+                 data-photo="images/minhkhoi.jpg"
+                 data-location="Thái Bình, Việt Nam"
+                 data-experience="1+ năm làm leader"
+                 data-education="Hoàn thành xuất sắc chương trình cấp 3"
+                 data-skills="Lãnh đạo"
+                 data-facebook="#"
+                 data-twitter="#"
+                 data-linkedin="#">
+                <!-- #chỉnh sửa ảnh-->
+                <div class="card-image">
+                    <div class="avatar">
+                        <img src = "images/minhkhoi.jpg" alt = "Nguyễn Minh Khôi" class = "member-photo"> 
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Nguyễn Minh Khôi</h3>
+                    <p class="member-role">Leader</p>
+                    <p class="member-description">
+                        Thích chơi game, du lịch
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="team-card"
+                 data-name="Phan Minh Huy"
+                 data-role="Member"
+                 data-description="Chơi game & học hỏi, xem phim"
+                 data-email="tranthib@company.com"
+                 data-id="chưa có id"
+                 data-photo="images/minhhuy.png"
+                 data-location="Tây Ninh, Việt Nam"
+                 data-experience="Giải nhì học sinh giỏi tỉnh môn Toán"
+                 data-education="Cựu học sinh THPT chuyên Trần Văn Giàu"
+                 data-skills="Báo cáo nội dung, lên ý tưởng, thuyết trình"
+                 data-facebook="#"
+                 data-twitter="#"
+                 data-linkedin="#">
+                <div class="card-image">
+                    <div class="avatar">
+                        <img src = "images/minhhuy.png" alt = "Phan Minh Huy" class = "member-photo"> 
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Phan Minh Huy</h3>
+                    <p class="member-role">Member</p>
+                    <p class="member-description">
+                         Chơi game & học hỏi, xem phim 
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="team-card"
+                 data-name="Tạ Kim Thoa"
+                 data-role="Thư kí"
+                 data-description="Vẽ, nghe nhạc, đọc truyện tranh, xem phim, chơi thể thao"
+                 data-email="2512751134@student.hcmus.edu.vn"
+                 data-id="25127511"
+                 data-photo="images/kimthoa.jpg"
+                 data-location="Đà Nẵng, Việt Nam"
+                 data-experience="1 năm Powerpoint"
+                 data-education="Giải III HSG cấp tỉnh môn Toán"
+                 data-skills="Kĩ năng thiết kế slide"
+                 data-facebook=""
+                 data-twitter="#"
+                 data-linkedin="#">
+                <div class="card-image">
+                    <div class="avatar">
+                        <img src = "images/kimthoa.jpg" alt = "Tạ Kim Thoa" class = "member-photo"> 
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Tạ Kim Thoa</h3>
+                    <p class="member-role">Thư kí</p>
+                    <p class="member-description">
+                    Vẽ, nghe nhạc, đọc truyện tranh, xem phim, chơi thể thao.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="team-card"
+                 data-name="Bùi Quang Huy"
+                 data-role="Memember"
+                 data-description="Cựu học sinh THPT Võ Trường Toản, IELTS 8.0"
+                 data-email="bqhuy2520@clc.fitus.edu.vn"
+                 data-id="25127056"
+                 data-photo="images/quanghuy.jpg"
+                 data-location="Hà Nội, Việt Nam"
+                 data-experience="1 năm làm powerpoint"
+                 data-education="Cựu học sinh THPT Võ Trường Toản, Ielts 8.0 overall, giải 3 cấp thành phố môn Tiếng Anh"
+                 data-skills="Kĩ năng thiết kế slide"
+                 data-facebook="#"
+                 data-twitter="#"
+                 data-linkedin="#">
+                <div class="card-image">
+                    <div class="avatar">
+                        <img src = "images/quanghuy.jpg" alt = "Bùi Quang Huy" class = "member-photo"> 
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Bùi Quang Huy</h3>
+                    <p class="member-role">Member</p>
+                    <p class="member-description">
+                        Thích chơi game, nuôi mèo
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 5 -->
+            <div class="team-card"
+                 data-name="Đỗ Tấn Phong"
+                 data-role="Member"
+                 data-description="Đọc, phân tích dữ liệu"
+                 data-email=" dtphong2533@clc.fitus.edu.vn"
+                 data-id="25127117"
+                 data-photo="images/tanphong.jpg"
+                 data-location="TP. Hồ Chí Minh, Việt Nam"
+                 data-experience="1+ năm đọc, phân tích dữ liệu"
+                 data-education="Cựu học sinh THPT Lê Thánh Tông"
+                 data-skills="Đọc, phân tích dữ liệu"
+                 data-facebook="#"
+                 data-twitter="#"
+                 data-linkedin="#">
+                <div class="card-image">
+                    <div class="avatar">
+                        <img src = "images/tanphong.jpg" alt = "Bùi Quang Huy" class = "member-photo"> 
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Đỗ Tấn Phong</h3>
+                    <p class="member-role">Member</p>
+                    <p class="member-description">
+                        Sở thích chơi game
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 6 -->
+            <div class="team-card"
+                 data-name="Nguyễn Ngọc Minh Quân"
+                 data-role="Member"
+                 data-description="Thích chơi thể thao điện tử, thể thao, xem phim, nghe nhạc, luôn học hỏi, học hỏi và hoàn thiện bản thân"
+                 data-email="2512747301@student.hcmus.edu.vn"
+                 data-id="25127473"
+                 data-photo="images/minhquan.png"
+                 data-location="Phú Yên, Việt Nam"
+                 data-experience=""
+                 data-education="Cựu học sinh THPT Nguyễn Trãi"
+                 data-skills="làm Canva, lên ý tưởng, công việc sáng tạo"
+                 data-facebook="#"
+                 data-twitter="#"
+                 data-linkedin="#">
+                <div class="card-image">
+                    <div class="avatar">
+                        <img src = "images/minhquan.png" alt = "Nguyễn Ngọc Minh Quân" class = "member-photo"> 
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Nguyễn Ngọc Minh Quân</h3>
+                    <p class="member-role">Member</p>
+                    <p class="member-description">
+                        Luôn học hỏi và phát triển & hoàn thiện bản thân.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 7 -->
+            <div class="team-card"
+                 data-name="Nguyễn Sơn Lâm"
+                 data-role="Member"
+                 data-description="Thích ngủ"
+                 data-email="2512720514@student.hcmus.edu.vn"
+                 data-id="25127205"
+                 data-photo="images/sonlam.png"
+                 data-location="Quảng Ngãi, Việt Nam"
+                 data-experience="1+ làm nội dung, lọc và đánh giá, chỉnh sửa nội dung"
+                 data-education="Cựu học sinh THPT Võ Nguyên Giáp"
+                 data-skills="Chắt lọc và tìm kiếm thông tin"
+                 data-facebook="#"
+                 data-twitter="#"
+                 data-linkedin="#">
+                <div class="card-image">
+                    <div class="avatar">
+                        <img src = "images/sonlam.png" alt = "Nguyễn Sơn Lâm" class = "member-photo"> 
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Nguyễn Sơn Lâm</h3>
+                    <p class="member-role">Member</p>
+                    <p class="member-description">
+                        Thích ngủ, chơi game.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 8 -->
+            
+
+            </div>
+        </section>
+
+        <!-- Products Page Section -->
+        <section id="products-section" class="content-section">
+            <header class="header">
+                <h1 class="header-title">Sản Phẩm Của Chúng Tôi</h1>
+                <p class="header-subtitle">Logo, Poster và Video dự án</p>
+            </header>
+
+            <div class="products-timeline-container">
+                <!-- Product 1: Logo -->
+                <div class="product-timeline-item">
+                    <div class="product-timeline-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="product-timeline-content">
+                        <div class="product-timeline-date">Logo</div>
+                        <h3 class="product-timeline-title">Logo Dự Án</h3>
+                        <p class="product-timeline-description">
+                            Logo đại diện cho dự án và nhóm của chúng tôi
+                        </p>
+                        <div class="product-image-gallery">
+                            <div class="product-gallery-item" onclick="openProductImageModal('wrap to web/logo/Logo.png')">
+                                <img src="wrap to web/logo/Logo.png" alt="Logo dự án" class="product-gallery-img">
+                                <div class="product-gallery-overlay">
+                                    <i class="fas fa-search-plus"></i>
+                                    <p>Click để xem</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Poster -->
+                <div class="product-timeline-item">
+                    <div class="product-timeline-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <div class="product-timeline-content">
+                        <div class="product-timeline-date">Poster</div>
+                        <h3 class="product-timeline-title">Poster Dự Án</h3>
+                        <p class="product-timeline-description">
+                            Poster giới thiệu và quảng bá dự án của nhóm
+                        </p>
+                        <div class="product-image-gallery">
+                            <div class="product-gallery-item" onclick="openProductImageModal('images/Poster.jpg')">
+                                <img src="images/Poster.jpg" alt="Poster dự án" class="product-gallery-img">
+                                <div class="product-gallery-overlay">
+                                    <i class="fas fa-search-plus"></i>
+                                    <p>Click để xem</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Video -->
+                <div class="product-timeline-item">
+                    <div class="product-timeline-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="product-timeline-content">
+                        <div class="product-timeline-date">Video</div>
+                        <h3 class="product-timeline-title">Video Dự Án</h3>
+                        <p class="product-timeline-description">
+                            Video giới thiệu và trình bày về dự án của chúng tôi
+                        </p>
+                        
+                        <!-- Kịch bản Video -->
+                        <div class="video-script-section">
+                            <h4 class="video-script-title">
+                                <i class="fas fa-file-alt"></i> Kịch Bản Video
+                            </h4>
+                            <p class="video-script-description">
+                                Kịch bản chi tiết cho video giới thiệu dự án
+                            </p>
+                            <a href="https://docs.google.com/document/d/1bpU5YctQX3BtupIUP3-1zNVi512lFqaGvhvRb-ttl0M/edit?usp=drive_link" id="script-link" target="_blank" class="video-script-link">
+                                <i class="fas fa-external-link-alt"></i> Xem kịch bản
+                            </a>
+                        </div>
+
+                        <!-- Video Section (Sẽ thêm sau) -->
+                        <div class="video-placeholder" style="display: none;">
+                            <p>Video sẽ được cập nhật sau</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Page Section -->
+        <section id="progress-section" class="content-section">
+            <header class="header">
+                <h1 class="header-title">Tiến Độ Dự Án</h1>
+                <p class="header-subtitle">Theo dõi tiến độ và phân công công việc</p>
+            </header>
+
+            <div class="progress-container">
+                <div class="progress-card">
+                    <div class="progress-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Bảng Phân Công Nhiệm Vụ</h3>
+                    <p>Theo dõi và quản lý phân công công việc cho từng thành viên</p>
+                    <a href="https://docs.google.com/spreadsheets/d/1M3xGpinEtrwIlM2rzZXS50vPeg9K2rrHa4nLw4jTOP8/edit?usp=drive_link" target="_blank" class="progress-link">
+                        <i class="fas fa-external-link-alt"></i> Xem bảng phân công
+                    </a>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Gantt Chart</h3>
+                    <p>Biểu đồ tiến độ dự án theo thời gian</p>
+                    <a href="https://docs.google.com/spreadsheets/d/1HHLXaV-m01GsgW4ADCoPEpuJx0KVs9pD/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" target="_blank" class="progress-link">
+                        <i class="fas fa-external-link-alt"></i> Xem Gantt Chart
+                    </a>
+                </div>
+
+                <div class="progress-card" id="meeting-progress-card" style="cursor: pointer;">
+                    <div class="progress-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Tiến Độ Họp Nhóm</h3>
+                    <p>Hình ảnh và ghi chú từ các buổi họp nhóm</p>
+                    <div class="progress-image">
+                        <img src="wrap to web/progress/progress_online_meet.png" alt="Tiến độ họp nhóm">
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button class="view-gallery-btn">
+                            <i class="fas fa-images"></i> Xem tất cả hình ảnh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documents Page Section -->
+        <section id="documents-section" class="content-section">
+            <header class="header">
+                <h1 class="header-title">Biên Bản & Tài Liệu</h1>
+                <p class="header-subtitle">Các biên bản họp nhóm và tài liệu dự án</p>
+            </header>
+
+            <div class="documents-container">
+                <div class="document-category">
+                    <h2 class="document-category-title">
+                        <i class="fas fa-file-contract"></i> Biên Bản Họp Nhóm
+                    </h2>
+                    <div class="document-list">
+                        <div class="document-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="document-info">
+                                <h3>Hợp đồng thành lập nhóm và biên bản họp lần 1</h3>
+                                <p>PDF Document</p>
+                            </div>
+                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Hợp đồng thành lập nhóm và biên bản họp lần 1.pdf" target="_blank" class="document-link">
+                                <i class="fas fa-download"></i> Tải xuống
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biên bản họp lần 2</h3>
+                                <p>Word Document</p>
+                            </div>
+                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp lần 2.docx" target="_blank" class="document-link">
+                                <i class="fas fa-download"></i> Tải xuống
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biên bản họp lần 3</h3>
+                                <p>Word Document</p>
+                            </div>
+                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp lần 3.docx" target="_blank" class="document-link">
+                                <i class="fas fa-download"></i> Tải xuống
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biên bản họp nhóm lần 4</h3>
+                                <p>Word Document</p>
+                            </div>
+                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp nhóm lần 4.docx" target="_blank" class="document-link">
+                                <i class="fas fa-download"></i> Tải xuống
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biên bản họp nhóm lần 5</h3>
+                                <p>Word Document</p>
+                            </div>
+                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp nhóm lần 5.docx" target="_blank" class="document-link">
+                                <i class="fas fa-download"></i> Tải xuống
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biên bản họp nhóm lần 6</h3>
+                                <p>Word Document</p>
+                            </div>
+                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp nhóm lần 6.docx" target="_blank" class="document-link">
+                                <i class="fas fa-download"></i> Tải xuống
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-category">
+                    <h2 class="document-category-title">
+                        <i class="fas fa-file-alt"></i> Tài Liệu Kế Hoạch
+                    </h2>
+                    <div class="document-list">
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Bảng kế hoạch</h3>
+                                <p>Online Document</p>
+                            </div>
+                            <a href="https://docs.google.com/document/d/13eTWZKlI2omTJtltQgRMGFpgXm8GrXot/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" id="doc-plan-1" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Báo cáo tiến độ và minh chứng</h3>
+                                <p>Online Document</p>
+                            </div>
+                            <a href="https://docs.google.com/document/d/1UESKWYvd1TmUv1jP7KdLqsr3rKjEC8mA/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" id="doc-plan-2" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biểu mẫu tổng kết điểm</h3>
+                                <p>Online Document</p>
+                            </div>
+                            <a href="#" id="doc-plan-3" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-logo">
+                <img src="wrap to web/logo/Logo.png" alt="Logo" class="footer-logo-img">
+            </div>
+            <p>&copy; 2025 - Đội Ngũ Của Chúng Tôi. Tất cả quyền được bảo lưu.</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Member Details -->
+    <div id="memberModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="modal-avatar">
+                        <img id="modal-avatar-img" src="" alt="" class="modal-avatar-image">
+                        <i id="modal-avatar-icon" class="fas fa-user"></i>
+                    </div>
+                    <div class="modal-title-section">
+                        <h2 id="modal-name" class="modal-member-name"></h2>
+                        <p id="modal-role" class="modal-member-role"></p>
+                    </div>
+                </div>
+                
+                <div class="modal-details">
+                    <p id="modal-description" class="modal-description"></p>
+                    
+                    <div class="modal-info-grid">
+                        <div class="modal-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email:</strong>
+                                <p id="modal-email"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-info-item">
+                            <i class="fas fa-id-badge"></i>
+                            <div>
+                                <strong>ID thành viên:</strong>
+                                <p id="modal-id"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Địa điểm:</strong>
+                                <p id="modal-location"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>Học vấn:</strong>
+                                <p id="modal-education"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Meeting Images Gallery -->
+    <div id="meetingGalleryModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content gallery-modal-content">
+            <button class="modal-close gallery-close">&times;</button>
+            <div class="gallery-header">
+                <h2>Hình Ảnh Họp Nhóm Online</h2>
+                <p>Tất cả hình ảnh từ các buổi họp nhóm</p>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="wrap to web/progress/progress_online_meet.png" alt="Họp nhóm online 1" onclick="openImageModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="wrap to web/progress/582184579_812787881622260_6971717357119720173_n.png" alt="Họp nhóm online 2" onclick="openImageModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="wrap to web/progress/582422520_1409022314177798_2766183900000120454_n.png" alt="Họp nhóm online 3" onclick="openImageModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="wrap to web/progress/image_2025-11-13_210743183.png" alt="Họp nhóm online 4" onclick="openImageModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="wrap to web/progress/Screenshot 2025-11-21 204400.png" alt="Họp nhóm online 5" onclick="openImageModal(this.src)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Full Size Image -->
+    <div id="imageModal" class="modal">
+        <div class="modal-overlay" onclick="closeImageModal()"></div>
+        <div class="modal-content image-modal-content">
+            <button class="modal-close image-close" onclick="closeImageModal()">&times;</button>
+            <img id="fullSizeImage" src="" alt="Full size image">
+        </div>
+    </div>
+
+    <!-- Modal for Product Image (Logo/Poster) -->
+    <div id="productImageModal" class="modal">
+        <div class="modal-overlay" onclick="closeProductImageModal()"></div>
+        <div class="modal-content image-modal-content">
+            <button class="modal-close image-close" onclick="closeProductImageModal()">&times;</button>
+            <img id="productFullSizeImage" src="" alt="Product full size image">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
