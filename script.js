@@ -1,64 +1,127 @@
-// Tab Navigation System
-const navLinks = document.querySelectorAll('.nav-link');
-const contentSections = document.querySelectorAll('.content-section');
-const mainNav = document.querySelector('.main-nav');
+// Tab Navigation System - Initialize when DOM is ready
+let navLinks, contentSections, mainNav;
+let isSwitching = false; // Prevent multiple rapid clicks
 
-// Scroll effect for navigation
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        mainNav.classList.add('scrolled');
-    } else {
-        mainNav.classList.remove('scrolled');
+// Wait for DOM to be ready
+function initNavigation() {
+    navLinks = document.querySelectorAll('.nav-link');
+    contentSections = document.querySelectorAll('.content-section');
+    mainNav = document.querySelector('.main-nav');
+    
+    if (!navLinks.length || !contentSections.length) {
+        console.warn('Navigation elements not found, retrying...');
+        setTimeout(initNavigation, 100);
+        return;
     }
-});
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+    
+    // Scroll effect for navigation with throttle
+    let scrollTimer = null;
+    window.addEventListener('scroll', () => {
+        if (scrollTimer !== null) {
+            clearTimeout(scrollTimer);
         }
-    });
-}, observerOptions);
-
-// Function to switch tab (accessible globally)
-function switchToTab(tabName) {
-    switchTab(tabName);
-    // Scroll to top when switching tabs
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        scrollTimer = setTimeout(() => {
+            if (mainNav) {
+                if (window.scrollY > 50) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+            }
+        }, 10);
+    }, { passive: true });
+    
+    // Add click event listeners to nav links
+    navLinks.forEach(link => {
+        // Remove any existing listeners by cloning
+        const newLink = link.cloneNode(true);
+        link.parentNode.replaceChild(newLink, link);
+        
+        newLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Prevent rapid clicking
+            if (isSwitching) {
+                return;
+            }
+            
+            const tabName = this.getAttribute('data-tab');
+            if (tabName) {
+                switchTab(tabName);
+            }
+        }, { passive: false });
     });
 }
 
+// Function to switch tab (accessible globally)
+function switchToTab(tabName) {
+    if (!tabName) return;
+    switchTab(tabName);
+}
 
-// Add click event listeners to nav links
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const tabName = this.getAttribute('data-tab');
-        switchTab(tabName);
-        
-        // Scroll to top when switching tabs
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-        
-        // Initialize product animations when switching to home tab
-        if (tabName === 'home') {
-            setTimeout(() => {
-                initProductAnimations();
-            }, 100);
-        }
+// Main switch tab function
+function switchTab(tabName) {
+    if (isSwitching || !tabName) return;
+    
+    isSwitching = true;
+    
+    // Get elements
+    if (!navLinks) navLinks = document.querySelectorAll('.nav-link');
+    if (!contentSections) contentSections = document.querySelectorAll('.content-section');
+    
+    // Remove active class from all nav links and sections with smooth transition
+    navLinks.forEach(link => {
+        link.style.transition = 'all 0.3s ease';
+        link.classList.remove('active');
     });
-});
+    
+    contentSections.forEach(section => {
+        section.style.transition = 'opacity 0.3s ease';
+        section.style.opacity = '0';
+        setTimeout(() => {
+            section.classList.remove('active');
+            section.style.opacity = '';
+        }, 150);
+    });
+    
+    // Add active class to clicked nav link
+    const clickedLink = document.querySelector(`[data-tab="${tabName}"]`);
+    if (clickedLink) {
+        clickedLink.classList.add('active');
+    }
+    
+    // Show corresponding section with fade-in
+    const targetSection = document.getElementById(`${tabName}-section`);
+    if (targetSection) {
+        setTimeout(() => {
+            targetSection.classList.add('active');
+            targetSection.style.opacity = '0';
+            requestAnimationFrame(() => {
+                targetSection.style.transition = 'opacity 0.4s ease';
+                targetSection.style.opacity = '1';
+            });
+            
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Initialize specific content based on tab
+            setTimeout(() => {
+                if (tabName === 'home') {
+                    initProductAnimations();
+                } else if (tabName === 'members') {
+                    initTeamCards();
+                }
+                isSwitching = false;
+            }, 400);
+        }, 150);
+    } else {
+        isSwitching = false;
+    }
+}
 
 // Initialize product animations for home page
 function initProductAnimations() {
@@ -257,34 +320,13 @@ function initTeamCards() {
     });
 }
 
-// Initialize team cards on page load
-initTeamCards();
-
-// Re-initialize when switching to members tab
-function switchTab(tabName) {
-    // Remove active class from all nav links and sections
-    navLinks.forEach(link => link.classList.remove('active'));
-    contentSections.forEach(section => section.classList.remove('active'));
-    
-    // Add active class to clicked nav link
-    const clickedLink = document.querySelector(`[data-tab="${tabName}"]`);
-    if (clickedLink) {
-        clickedLink.classList.add('active');
-    }
-    
-    // Show corresponding section
-    const targetSection = document.getElementById(`${tabName}-section`);
-    if (targetSection) {
-        targetSection.classList.add('active');
-        
-        // Initialize team cards if switching to members section
-        if (tabName === 'members') {
-            setTimeout(() => {
-                initTeamCards();
-            }, 100);
-        }
-    }
+// Initialize team cards on page load (only if members section is visible)
+if (document.getElementById('members-section')?.classList.contains('active')) {
+    setTimeout(() => {
+        initTeamCards();
+    }, 300);
 }
+
 
 // Close modal on close button click
 modalClose.addEventListener('click', closeModal);
@@ -393,9 +435,13 @@ function setDocumentPlanLinks() {
 
 // Set links when DOM is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setDocumentPlanLinks);
+    document.addEventListener('DOMContentLoaded', () => {
+        setDocumentPlanLinks();
+        initNavigation();
+    });
 } else {
     setDocumentPlanLinks();
+    initNavigation();
 }
 
 // Meeting Gallery Modal
@@ -493,6 +539,10 @@ document.addEventListener('keydown', function(e) {
         closeProductImageModal();
     }
 });
+
+// Make switchToTab globally accessible for onclick handlers
+window.switchToTab = switchToTab;
+window.openProductImageModal = openProductImageModal;
 
 console.log('Team member page loaded successfully! 🎉');
 console.log('Click on any team member card to view detailed information.');
