@@ -52,7 +52,7 @@ color: #ff6b6b;
 /* Background */
 background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
 
-/* Card Image */
+/* Card Image ddd*/
 background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
 
 /* Accent Colors */
