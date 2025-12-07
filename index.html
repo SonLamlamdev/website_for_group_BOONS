@@ -32,7 +32,7 @@
                 <div class="header-logo">
                     <img src="wrap to web/logo/Logo.png" alt="Logo" class="logo-img-large">
                 </div>
-                <h1 class="header-title">Chào Mừng Đến Với Dự Án Của Chúng Tôi</h1>
+                <h1 class="header-title">Chào Mừng Đến Với <span class="highlight">Dự Án</span> Của Chúng Tôi</h1>
                 <p class="header-subtitle">Khám phá sản phẩm và đội ngũ của chúng tôi</p>
             </header>
 
@@ -42,52 +42,58 @@
                 
                 <!-- Timeline Item 1: Sản phẩm -->
                 <div class="home-timeline-item" onclick="switchToTab('products')">
+                    <div class="home-timeline-icon-wrapper">
+                        <i class="fas fa-gift"></i>
+                    </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">01</div>
                         <h3 class="home-timeline-title">Sản Phẩm</h3>
                         <p class="home-timeline-description">
                             Logo, Poster và Video dự án - Những sản phẩm được tạo ra bởi nhóm. Khám phá các sản phẩm độc đáo mà nhóm đã phát triển.
                         </p>
+                        <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); openProductImageModal('wrap to web/logo/Logo.png')">
+                            <img src="wrap to web/logo/Logo.png" alt="Logo">
+                        </div>
                         <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('products'); return false;">
                             Xem chi tiết <i class="fas fa-arrow-right"></i>
                         </a>
-                    </div>
-                    <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); openProductImageModal('wrap to web/logo/Logo.png')">
-                        <img src="wrap to web/logo/Logo.png" alt="Logo">
                     </div>
                 </div>
 
                 <!-- Timeline Item 2: Biên bản -->
                 <div class="home-timeline-item" onclick="switchToTab('documents')">
+                    <div class="home-timeline-icon-wrapper">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">02</div>
                         <h3 class="home-timeline-title">Biên Bản</h3>
                         <p class="home-timeline-description">
                             Các biên bản họp nhóm và tài liệu kế hoạch dự án. Xem chi tiết quá trình làm việc và các quyết định quan trọng của nhóm.
                         </p>
+                        <div class="home-timeline-image-wrapper" style="background: var(--background-light); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-file-contract" style="font-size: 5rem; color: var(--secondary-green);"></i>
+                        </div>
                         <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('documents'); return false;">
                             Xem chi tiết <i class="fas fa-arrow-right"></i>
                         </a>
-                    </div>
-                    <div class="home-timeline-image-wrapper" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-file-contract" style="font-size: 8rem; color: rgba(255, 255, 255, 0.8);"></i>
                     </div>
                 </div>
 
                 <!-- Timeline Item 3: Tiến độ -->
                 <div class="home-timeline-item" onclick="switchToTab('progress')">
+                    <div class="home-timeline-icon-wrapper">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">03</div>
                         <h3 class="home-timeline-title">Tiến Độ</h3>
                         <p class="home-timeline-description">
                             Theo dõi tiến độ dự án, phân công công việc và hình ảnh họp nhóm. Cập nhật liên tục về tiến trình thực hiện dự án.
                         </p>
+                        <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); switchToTab('progress')">
+                            <img src="wrap to web/progress/progress_online_meet.png" alt="Tiến độ họp nhóm">
+                        </div>
                         <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('progress'); return false;">
                             Xem chi tiết <i class="fas fa-arrow-right"></i>
                         </a>
-                    </div>
-                    <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); switchToTab('progress')">
-                        <img src="wrap to web/progress/progress_online_meet.png" alt="Tiến độ họp nhóm">
                     </div>
                 </div>
             </div>
