@@ -123,6 +123,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 
 .footer-logo {
     margin-bottom: 15px;
+    display: none;
 }
 
 .footer-logo-img {
@@ -132,6 +133,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     border-radius: 50%;
     opacity: 0.6;
     filter: brightness(1.1);
+    display: none;
 }
 
 .header-logo {
