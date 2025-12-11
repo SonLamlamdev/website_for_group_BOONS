@@ -72,13 +72,15 @@ function initNavigation() {
     // Initial check
     checkNavBackground();
     
-    // Add click event listeners to nav links
+    // Add click event listeners to nav links and their parent li elements
     navLinks.forEach(link => {
         // Remove any existing listeners by cloning
         const newLink = link.cloneNode(true);
-        link.parentNode.replaceChild(newLink, link);
+        const parentLi = link.parentNode;
+        parentLi.replaceChild(newLink, link);
         
-        newLink.addEventListener('click', function(e) {
+        // Function to handle click
+        const handleClick = function(e) {
             e.preventDefault();
             e.stopPropagation();
             
@@ -87,12 +89,28 @@ function initNavigation() {
                 return;
             }
             
-            const tabName = this.getAttribute('data-tab');
+            const tabName = newLink.getAttribute('data-tab');
             if (tabName) {
                 // Direct call for immediate response
                 switchTab(tabName);
             }
+        };
+        
+        // Add click listener to the link
+        newLink.addEventListener('click', handleClick, { passive: false });
+        
+        // Add click listener to the parent li element for larger click area
+        // This allows clicking anywhere on the li element, not just the link text
+        parentLi.addEventListener('click', function(e) {
+            // If click is directly on the link, it will be handled by link's listener
+            // If click is on li but not on link, handle it here
+            if (e.target === parentLi || (!newLink.contains(e.target) && e.target !== newLink)) {
+                handleClick(e);
+            }
         }, { passive: false });
+        
+        // Make li element look clickable
+        parentLi.style.cursor = 'pointer';
     });
 }
 
