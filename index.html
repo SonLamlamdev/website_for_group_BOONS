@@ -50,17 +50,37 @@
                 </div>
             </header>
 
-            <!-- Main Timeline Section: Sản phẩm - Biên bản - Tiến độ -->
+            <!-- Main Timeline Section: Thành viên - Sản phẩm - Biên bản - Tiến độ -->
             <div class="home-timeline-section">
                 <h2 class="section-title">Dự Án Của Chúng Tôi</h2>
                 
-                <!-- Timeline Item 1: Sản phẩm -->
+                <!-- Timeline Item 1: Đội Ngũ -->
+                <div class="home-timeline-item" onclick="switchToTab('members')">
+                    <div class="home-timeline-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="home-timeline-content">
+                        <div class="home-timeline-number">01</div>
+                        <h3 class="home-timeline-title">Đội Ngũ</h3>
+                        <p class="home-timeline-description">
+                            Những thành viên tài năng đằng sau dự án. Khám phá đội ngũ đã cùng nhau xây dựng và phát triển dự án này.
+                        </p>
+                        <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('members'); return false;">
+                            Xem chi tiết <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); openProductImageModal('images/anhnhom.jpg')">
+                        <img src="images/anhnhom.jpg" alt="Ảnh nhóm">
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2: Sản phẩm -->
                 <div class="home-timeline-item" onclick="switchToTab('products')">
                     <div class="home-timeline-icon">
                         <i class="fas fa-box-open"></i>
                     </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">01</div>
+                        <div class="home-timeline-number">02</div>
                         <h3 class="home-timeline-title">Sản Phẩm</h3>
                         <p class="home-timeline-description">
                             Logo, Poster và Video dự án - Những sản phẩm được tạo ra bởi nhóm. Khám phá các sản phẩm độc đáo mà nhóm đã phát triển.
@@ -74,13 +94,13 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 2: Biên bản -->
+                <!-- Timeline Item 3: Biên bản -->
                 <div class="home-timeline-item" onclick="switchToTab('documents')">
                     <div class="home-timeline-icon">
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">02</div>
+                        <div class="home-timeline-number">03</div>
                         <h3 class="home-timeline-title">Biên Bản</h3>
                         <p class="home-timeline-description">
                             Các biên bản họp nhóm và tài liệu kế hoạch dự án. Xem chi tiết quá trình làm việc và các quyết định quan trọng của nhóm.
@@ -107,13 +127,13 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 3: Tiến độ -->
+                <!-- Timeline Item 4: Tiến độ -->
                 <div class="home-timeline-item" onclick="switchToTab('progress')">
                     <div class="home-timeline-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">03</div>
+                        <div class="home-timeline-number">04</div>
                         <h3 class="home-timeline-title">Tiến Độ</h3>
                         <p class="home-timeline-description">
                             Theo dõi tiến độ dự án, phân công công việc và hình ảnh họp nhóm. Cập nhật liên tục về tiến trình thực hiện dự án.
@@ -141,23 +161,6 @@
                     <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); switchToTab('progress')">
                         <img src="wrap to web/progress/minh_chung/progress_online_meet.png" alt="Tiến độ họp nhóm">
                     </div>
-                </div>
-            </div>
-
-            <!-- Team Photo Section -->
-            <div class="team-photo-section">
-                <h2 class="section-title">Những Thành Viên</h2>
-                <div class="team-photo-container">
-                    <div class="team-photo-wrapper" onclick="openProductImageModal('images/anhnhom.jpg')">
-                        <img src="images/anhnhom.jpg" alt="Ảnh nhóm" class="team-photo-img">
-                        <div class="team-photo-overlay">
-                            <i class="fas fa-search-plus"></i>
-                            <p>Click để xem ảnh to hơn</p>
-                        </div>
-                    </div>
-                    <a href="#" class="team-photo-link" onclick="event.preventDefault(); switchToTab('members'); return false;">
-                        Xem thêm <i class="fas fa-arrow-right"></i>
-                    </a>
                 </div>
             </div>
         </section>

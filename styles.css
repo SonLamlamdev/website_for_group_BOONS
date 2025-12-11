@@ -436,6 +436,10 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     animation-delay: 0.3s;
 }
 
+.home-timeline-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
 .home-timeline-item:nth-child(even) {
     flex-direction: row-reverse;
 }
@@ -517,9 +521,9 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 }
 
 .home-timeline-image-wrapper {
-    flex: 0 0 400px;
-    height: 400px;
-    width: 400px;
+    flex: 0 0 300px;
+    height: 300px;
+    width: 300px;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -1911,7 +1915,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 
     .home-timeline-image-wrapper {
         flex: none;
-        width: 100%;
+        width: 250px;
         height: 250px;
         order: -1 !important;
     }
