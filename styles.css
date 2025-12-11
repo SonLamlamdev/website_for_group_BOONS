@@ -2023,20 +2023,12 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
         flex: 0 0 calc(50% - 15px);
         max-width: calc(50% - 15px);
     }
-    
-    .product-timeline-content {
-        min-height: 550px;
-    }
 }
 
 @media (max-width: 768px) {
     .product-timeline-item {
         flex: 0 0 100%;
         max-width: 100%;
-    }
-    
-    .product-timeline-content {
-        min-height: 500px;
     }
 }
 
@@ -2064,7 +2056,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     height: 100%;
-    min-height: 600px;
+    min-height: auto;
     display: flex;
     flex-direction: column;
 }
@@ -2215,6 +2207,40 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 .video-script-link:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+}
+
+/* Practice Activity Section Styles */
+.practice-activity-section {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 25px;
+    border-left: 4px solid #6B4DFF;
+}
+
+.practice-activity-section:first-child {
+    margin-top: 0;
+}
+
+.practice-activity-title {
+    font-size: 1.5rem;
+    color: #6B4DFF;
+    margin-bottom: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.practice-activity-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.practice-activity-section .product-image-gallery {
+    margin-top: 15px;
 }
 
 /* Carousel Navigation */
