@@ -1,3 +1,8 @@
+:root {
+    --primary-orange: #6B4DFF;
+    --primary-orange-dark: #9A70FF;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -963,7 +968,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 }
 
 .card-image {
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-dark) 100%);
+    background: linear-gradient(135deg, #6B4DFF 0%, #9A70FF 100%);
     height: 200px;
     display: flex;
     align-items: center;
@@ -983,6 +988,13 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     animation: pulse 3s ease-in-out infinite;
 }
 
+.card-image .avatar i,
+.card-image i {
+    color: #fff !important;
+    z-index: 2;
+    position: relative;
+}
+
 .avatar {
     width: 120px;
     height: 120px;
@@ -996,6 +1008,10 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     z-index: 1;
+}
+
+.avatar i {
+    color: #6B4DFF;
 }
 
 .team-card:hover .avatar {
@@ -1056,7 +1072,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 .social-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-dark) 100%);
+    background: linear-gradient(135deg, #6B4DFF 0%, #9A70FF 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1065,6 +1081,10 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     text-decoration: none;
     font-size: 1rem;
     transition: all 0.3s ease;
+}
+
+.social-icon i {
+    color: #fff;
 }
 
 .social-icon:hover {
@@ -1756,8 +1776,8 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 
 /* Gallery Modal Styles */
 .view-gallery-btn {
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-dark) 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #6B4DFF 0%, #9A70FF 100%);
+    color: #fff !important;
     border: none;
     padding: 12px 25px;
     border-radius: 25px;
@@ -1768,7 +1788,13 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     align-items: center;
     gap: 10px;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 3px 10px rgba(107, 77, 255, 0.3);
+}
+
+.view-gallery-btn,
+.view-gallery-btn *,
+.view-gallery-btn i {
+    color: #fff !important;
 }
 
 .view-gallery-btn:hover {
