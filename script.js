@@ -175,6 +175,8 @@ function switchTab(tabName) {
                     initProductAnimations();
                 } else if (tabName === 'members') {
                     initTeamCards();
+                } else if (tabName === 'products') {
+                    initProductsCarousel();
                 }
                 isSwitching = false;
             }, 300);
@@ -588,6 +590,226 @@ document.addEventListener('keydown', function(e) {
         closeProductImageModal();
     }
 });
+
+// Products Carousel Functionality
+function initProductsCarousel() {
+    const carouselContainer = document.querySelector('.products-carousel-container');
+    const carouselTrack = document.querySelector('.products-carousel-track');
+    const prevBtn = document.querySelector('.carousel-btn-prev');
+    const nextBtn = document.querySelector('.carousel-btn-next');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    if (!carouselContainer || !carouselTrack) return;
+    
+    let currentIndex = 0;
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let startScrollLeft = 0;
+    
+    const items = carouselTrack.querySelectorAll('.product-timeline-item');
+    const totalItems = items.length;
+    
+    if (totalItems === 0) return;
+    
+    // Calculate item width including gap
+    const getItemWidth = () => {
+        const item = items[0];
+        if (!item) return 0;
+        const style = window.getComputedStyle(carouselTrack);
+        const gap = parseInt(style.gap) || 30;
+        const containerWidth = carouselContainer.offsetWidth;
+        const itemsPerView = window.innerWidth > 992 ? 3 : window.innerWidth > 768 ? 2 : 1;
+        return containerWidth / itemsPerView;
+    };
+    
+    const updateCarousel = () => {
+        const itemWidth = getItemWidth();
+        const translateX = -currentIndex * itemWidth;
+        carouselTrack.style.transform = `translateX(${translateX}px)`;
+        carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Update button states
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex >= totalItems - 1;
+    };
+    
+    const goToSlide = (index) => {
+        if (index < 0 || index >= totalItems) return;
+        currentIndex = index;
+        updateCarousel();
+    };
+    
+    const goToNext = () => {
+        if (currentIndex < totalItems - 1) {
+            goToSlide(currentIndex + 1);
+        }
+    };
+    
+    const goToPrev = () => {
+        if (currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+        }
+    };
+    
+    // Button events
+    if (prevBtn) {
+        prevBtn.addEventListener('click', goToPrev);
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', goToNext);
+    }
+    
+    // Dot events
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Mouse drag events
+    carouselContainer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        carouselContainer.style.cursor = 'grabbing';
+        startX = e.pageX - carouselContainer.offsetLeft;
+        startScrollLeft = carouselTrack.scrollLeft || 0;
+    });
+    
+    carouselContainer.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            carouselContainer.style.cursor = 'grab';
+            // Snap to nearest slide
+            const itemWidth = getItemWidth();
+            const draggedDistance = startScrollLeft - (carouselTrack.scrollLeft || 0);
+            if (Math.abs(draggedDistance) > itemWidth / 3) {
+                if (draggedDistance > 0 && currentIndex < totalItems - 1) {
+                    goToNext();
+                } else if (draggedDistance < 0 && currentIndex > 0) {
+                    goToPrev();
+                } else {
+                    updateCarousel();
+                }
+            } else {
+                updateCarousel();
+            }
+        }
+    });
+    
+    carouselContainer.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            carouselContainer.style.cursor = 'grab';
+            // Snap to nearest slide
+            const itemWidth = getItemWidth();
+            const draggedDistance = startScrollLeft - (carouselTrack.scrollLeft || 0);
+            if (Math.abs(draggedDistance) > itemWidth / 3) {
+                if (draggedDistance > 0 && currentIndex < totalItems - 1) {
+                    goToNext();
+                } else if (draggedDistance < 0 && currentIndex > 0) {
+                    goToPrev();
+                } else {
+                    updateCarousel();
+                }
+            } else {
+                updateCarousel();
+            }
+        }
+    });
+    
+    carouselContainer.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - carouselContainer.offsetLeft;
+        const walk = (x - startX) * 2;
+        const itemWidth = getItemWidth();
+        const newTranslateX = -currentIndex * itemWidth + walk;
+        carouselTrack.style.transform = `translateX(${newTranslateX}px)`;
+        carouselTrack.style.transition = 'none';
+    });
+    
+    // Touch events for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    
+    carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    carouselContainer.addEventListener('touchmove', (e) => {
+        if (!touchStartX || !touchStartY) return;
+        
+        const touchX = e.touches[0].clientX;
+        const touchY = e.touches[0].clientY;
+        const diffX = touchStartX - touchX;
+        const diffY = touchStartY - touchY;
+        
+        // Only prevent default if horizontal scroll is more than vertical
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            e.preventDefault();
+            const itemWidth = getItemWidth();
+            const newTranslateX = -currentIndex * itemWidth - diffX;
+            carouselTrack.style.transform = `translateX(${newTranslateX}px)`;
+            carouselTrack.style.transition = 'none';
+        }
+    }, { passive: false });
+    
+    carouselContainer.addEventListener('touchend', (e) => {
+        if (!touchStartX || !touchStartY) return;
+        
+        const touchEndX = e.changedTouches[0].clientX;
+        const diffX = touchStartX - touchEndX;
+        const itemWidth = getItemWidth();
+        
+        if (Math.abs(diffX) > itemWidth / 3) {
+            if (diffX > 0 && currentIndex < totalItems - 1) {
+                goToNext();
+            } else if (diffX < 0 && currentIndex > 0) {
+                goToPrev();
+            } else {
+                updateCarousel();
+            }
+        } else {
+            updateCarousel();
+        }
+        
+        touchStartX = 0;
+        touchStartY = 0;
+        carouselTrack.style.transition = '';
+    }, { passive: true });
+    
+    // Keyboard navigation
+    carouselContainer.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            goToPrev();
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            goToNext();
+        }
+    });
+    
+    // Make carousel focusable
+    carouselContainer.setAttribute('tabindex', '0');
+    
+    // Initialize
+    updateCarousel();
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            updateCarousel();
+        }, 250);
+    });
+}
+
 
 // Make switchToTab globally accessible for onclick handlers
 window.switchToTab = switchToTab;
