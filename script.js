@@ -14,21 +14,32 @@ function initNavigation() {
         return;
     }
     
-    // Scroll effect for navigation with throttle
+    // Scroll effect for navigation with throttle - optimized for smoothness
     let scrollTimer = null;
+    let lastScrollY = window.scrollY;
+    
     window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Use requestAnimationFrame for smoother scroll handling
         if (scrollTimer !== null) {
-            clearTimeout(scrollTimer);
+            cancelAnimationFrame(scrollTimer);
         }
-        scrollTimer = setTimeout(() => {
+        
+        scrollTimer = requestAnimationFrame(() => {
             if (mainNav) {
-                if (window.scrollY > 50) {
-                    mainNav.classList.add('scrolled');
+                if (currentScrollY > 50) {
+                    if (!mainNav.classList.contains('scrolled')) {
+                        mainNav.classList.add('scrolled');
+                    }
                 } else {
-                    mainNav.classList.remove('scrolled');
+                    if (mainNav.classList.contains('scrolled')) {
+                        mainNav.classList.remove('scrolled');
+                    }
                 }
             }
-        }, 10);
+            lastScrollY = currentScrollY;
+        });
     }, { passive: true });
     
     // Add click event listeners to nav links
@@ -48,6 +59,7 @@ function initNavigation() {
             
             const tabName = this.getAttribute('data-tab');
             if (tabName) {
+                // Direct call for immediate response
                 switchTab(tabName);
             }
         }, { passive: false });
@@ -60,7 +72,7 @@ function switchToTab(tabName) {
     switchTab(tabName);
 }
 
-// Main switch tab function
+// Main switch tab function - optimized for smoothness
 function switchTab(tabName) {
     if (isSwitching || !tabName) return;
     
@@ -70,45 +82,64 @@ function switchTab(tabName) {
     if (!navLinks) navLinks = document.querySelectorAll('.nav-link');
     if (!contentSections) contentSections = document.querySelectorAll('.content-section');
     
-    // Remove active class from all nav links and sections with smooth transition
+    // Get target section early
+    const targetSection = document.getElementById(`${tabName}-section`);
+    if (!targetSection) {
+        isSwitching = false;
+        return;
+    }
+    
+    // Find current active section
+    const currentSection = Array.from(contentSections).find(section => 
+        section.classList.contains('active')
+    );
+    
+    // Update navigation links immediately (no delay for better UX)
     navLinks.forEach(link => {
-        link.style.transition = 'all 0.3s ease';
         link.classList.remove('active');
     });
-    
-    contentSections.forEach(section => {
-        section.style.transition = 'opacity 0.3s ease';
-        section.style.opacity = '0';
-        setTimeout(() => {
-            section.classList.remove('active');
-            section.style.opacity = '';
-        }, 150);
-    });
-    
-    // Add active class to clicked nav link
     const clickedLink = document.querySelector(`[data-tab="${tabName}"]`);
     if (clickedLink) {
         clickedLink.classList.add('active');
     }
     
-    // Show corresponding section with fade-in
-    const targetSection = document.getElementById(`${tabName}-section`);
-    if (targetSection) {
-        setTimeout(() => {
-            targetSection.classList.add('active');
-            targetSection.style.opacity = '0';
-            requestAnimationFrame(() => {
-                targetSection.style.transition = 'opacity 0.4s ease';
-                targetSection.style.opacity = '1';
-            });
+    // Use single requestAnimationFrame for all DOM updates
+    requestAnimationFrame(() => {
+        // Fade out current section
+        if (currentSection && currentSection !== targetSection) {
+            currentSection.style.opacity = '0';
+            currentSection.style.transform = 'translateY(10px)';
+        }
+        
+        // Prepare target section
+        targetSection.classList.add('active');
+        targetSection.style.opacity = '0';
+        targetSection.style.transform = 'translateY(10px)';
+        
+        // Force reflow once
+        targetSection.offsetHeight;
+        
+        // Fade in target section in next frame
+        requestAnimationFrame(() => {
+            targetSection.style.opacity = '1';
+            targetSection.style.transform = 'translateY(0)';
             
-            // Scroll to top smoothly
+            // Clean up old section after transition
+            if (currentSection && currentSection !== targetSection) {
+                setTimeout(() => {
+                    currentSection.classList.remove('active');
+                    currentSection.style.opacity = '';
+                    currentSection.style.transform = '';
+                }, 250);
+            }
+            
+            // Scroll to top smoothly (non-blocking)
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
             
-            // Initialize specific content based on tab
+            // Initialize content after transition completes
             setTimeout(() => {
                 if (tabName === 'home') {
                     initProductAnimations();
@@ -116,11 +147,9 @@ function switchTab(tabName) {
                     initTeamCards();
                 }
                 isSwitching = false;
-            }, 400);
-        }, 150);
-    } else {
-        isSwitching = false;
-    }
+            }, 300);
+        });
+    });
 }
 
 // Initialize product animations for home page

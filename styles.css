@@ -44,11 +44,14 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     align-items: center;
     justify-content: center;
     gap: 30px;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     border: 1px solid rgba(255, 255, 255, 0.2);
     position: sticky;
     top: 20px;
     z-index: 100;
+    will-change: background-color, box-shadow, border-color;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .main-nav.scrolled {
@@ -121,9 +124,12 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     font-family: 'Inter', sans-serif;
     padding: 12px 25px;
     border-radius: 12px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    will-change: transform, background-color, box-shadow;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .nav-link::before {
@@ -151,20 +157,24 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     font-weight: 700;
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
 }
 
 /* Content Sections */
 .content-section {
     display: none;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transform: translateY(10px);
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
 }
 
 .content-section.active {
     display: block;
     opacity: 1;
-    animation: fadeIn 0.4s ease;
+    transform: translateY(0);
 }
 
 /* Team Photo Section (Home Page) */
@@ -1316,9 +1326,11 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
