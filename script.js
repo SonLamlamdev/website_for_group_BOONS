@@ -302,7 +302,7 @@ function getTeamCards() {
 function openModal(memberData) {
     // Populate modal with data
     document.getElementById('modal-name').textContent = memberData.name;
-    document.getElementById('modal-role').textContent = memberData.role;
+    document.getElementById('modal-role').textContent = memberData.shortRole || memberData.role || 'N/A';
     document.getElementById('modal-role-detail').textContent = memberData.role || 'N/A';
     document.getElementById('modal-description').textContent = memberData.description;
     document.getElementById('modal-email').textContent = memberData.email;
@@ -361,9 +361,14 @@ function initTeamCards() {
                 return;
             }
             
+            // Get short role from card display
+            const shortRoleElement = this.querySelector('.member-role');
+            const shortRole = shortRoleElement ? shortRoleElement.textContent.trim() : '';
+            
             const memberData = {
                 name: this.dataset.name,
-                role: this.dataset.role,
+                role: this.dataset.role, // Main job (công việc chính)
+                shortRole: shortRole, // Short role (vai trò ngắn gọn)
                 description: this.dataset.description,
                 email: this.dataset.email,
                 id: this.dataset.id,
