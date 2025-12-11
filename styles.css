@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     color: #333;
 }
 
-.main-nav.scrolled .nav-list li:hover .nav-link {
+.main-nav.scrolled .nav-list li:hover .nav-link:not(.active) {
     background: rgba(107, 77, 255, 0.1);
     color: #6B4DFF;
 }
@@ -72,6 +72,12 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 .main-nav.scrolled .nav-link.active {
     background: linear-gradient(135deg, rgba(107, 77, 255, 0.2), rgba(154, 112, 255, 0.15));
     color: #6B4DFF;
+}
+
+.main-nav.scrolled .nav-list li:hover .nav-link.active {
+    background: linear-gradient(135deg, rgba(107, 77, 255, 0.2), rgba(154, 112, 255, 0.15));
+    color: #6B4DFF;
+    transform: translateY(-2px) translateZ(0);
 }
 
 .nav-logo {
@@ -167,16 +173,27 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s ease;
+    opacity: 0;
 }
 
 .nav-link:hover::before {
     left: 100%;
+    opacity: 1;
 }
 
-.nav-list li:hover .nav-link {
+.nav-link.active::before {
+    display: none;
+}
+
+.nav-list li:hover .nav-link:not(.active) {
     background: rgba(255, 255, 255, 0.25);
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav-list li:hover .nav-link.active {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    transform: translateY(-2px) translateZ(0);
 }
 
 .nav-link.active {
@@ -184,6 +201,19 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     font-weight: 700;
     transform: translateY(-2px) translateZ(0);
+    pointer-events: auto;
+}
+
+.nav-link.active::before {
+    display: none !important;
+}
+
+.nav-link:not(.active)::before {
+    opacity: 0;
+}
+
+.nav-link:not(.active):hover::before {
+    opacity: 1;
 }
 
 /* Content Sections */
