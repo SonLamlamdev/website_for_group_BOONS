@@ -2209,38 +2209,146 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
 }
 
-/* Practice Activity Section Styles */
-.practice-activity-section {
-    background: #f8f9fa;
-    border-radius: 15px;
-    padding: 25px;
-    margin-top: 25px;
-    border-left: 4px solid #6B4DFF;
+/* Practice Section Styles */
+.practice-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
-.practice-activity-section:first-child {
-    margin-top: 0;
+.practice-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
-.practice-activity-title {
-    font-size: 1.5rem;
-    color: #6B4DFF;
-    margin-bottom: 10px;
-    font-weight: 700;
+.practice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.practice-card-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.practice-activity-description {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.6;
+    gap: 20px;
     margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
 }
 
-.practice-activity-section .product-image-gallery {
-    margin-top: 15px;
+.practice-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6B4DFF 0%, #9A70FF 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(107, 77, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.practice-title {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 700;
+    margin: 0;
+}
+
+.practice-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.practice-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.practice-gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    aspect-ratio: 4/3;
+}
+
+.practice-gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.practice-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.practice-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.practice-gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(107, 77, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #fff;
+}
+
+.practice-gallery-item:hover .practice-gallery-overlay {
+    opacity: 1;
+}
+
+.practice-gallery-overlay i {
+    font-size: 2.5rem;
+}
+
+.practice-document-link {
+    margin-top: 25px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .practice-card {
+        padding: 30px 20px;
+    }
+    
+    .practice-card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .practice-title {
+        font-size: 1.6rem;
+    }
+    
+    .practice-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
 }
 
 /* Carousel Navigation */
