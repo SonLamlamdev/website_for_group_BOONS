@@ -145,13 +145,41 @@ function switchTab(tabName) {
     );
     
     // Update navigation links immediately (no delay for better UX)
-    navLinks.forEach(link => {
-        link.classList.remove('active');
+    // Re-query navLinks to ensure we have the latest references after cloning
+    const allNavLinks = document.querySelectorAll('.nav-link');
+    
+    // Remove active class from ALL nav links first (including any duplicates)
+    allNavLinks.forEach(link => {
+        if (link.classList.contains('active')) {
+            link.classList.remove('active');
+        }
     });
-    const clickedLink = document.querySelector(`[data-tab="${tabName}"]`);
+    
+    // Also check parent li elements
+    const allNavLis = document.querySelectorAll('.nav-list li');
+    allNavLis.forEach(li => {
+        const linkInLi = li.querySelector('.nav-link');
+        if (linkInLi && linkInLi.classList.contains('active')) {
+            linkInLi.classList.remove('active');
+        }
+    });
+    
+    // Find and activate ONLY the correct link by matching data-tab exactly
+    let clickedLink = null;
+    allNavLinks.forEach(link => {
+        const linkTabName = link.getAttribute('data-tab');
+        if (linkTabName === tabName && !clickedLink) {
+            clickedLink = link;
+        }
+    });
+    
+    // Activate the found link
     if (clickedLink) {
         clickedLink.classList.add('active');
     }
+    
+    // Update global navLinks reference
+    navLinks = allNavLinks;
     
     // Use single requestAnimationFrame for all DOM updates
     requestAnimationFrame(() => {
