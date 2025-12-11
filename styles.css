@@ -2271,19 +2271,21 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 
 .practice-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
     margin-top: 20px;
 }
 
 .practice-gallery-item {
     position: relative;
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     aspect-ratio: 4/3;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 .practice-gallery-item:hover {
@@ -2322,7 +2324,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 }
 
 .practice-gallery-overlay i {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .practice-document-link {
@@ -2346,8 +2348,12 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     }
     
     .practice-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+    }
+    
+    .practice-gallery-item {
+        max-width: 150px;
     }
 }
 
