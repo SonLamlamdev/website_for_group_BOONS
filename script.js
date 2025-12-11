@@ -303,11 +303,11 @@ function openModal(memberData) {
     // Populate modal with data
     document.getElementById('modal-name').textContent = memberData.name;
     document.getElementById('modal-role').textContent = memberData.role;
+    document.getElementById('modal-role-detail').textContent = memberData.role || 'N/A';
     document.getElementById('modal-description').textContent = memberData.description;
     document.getElementById('modal-email').textContent = memberData.email;
     document.getElementById('modal-id').textContent = memberData.id || 'N/A';
     document.getElementById('modal-location').textContent = memberData.location;
-    document.getElementById('modal-education').textContent = memberData.education || 'N/A';
     
     // Handle avatar photo
     const modalAvatarImg = document.getElementById('modal-avatar-img');
