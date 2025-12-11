@@ -15,32 +15,62 @@ function initNavigation() {
     }
     
     // Scroll effect for navigation with throttle - optimized for smoothness
+    // Detect when scrolling over white background sections
     let scrollTimer = null;
     let lastScrollY = window.scrollY;
     
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
+    function checkNavBackground() {
+        if (!mainNav) return;
         
+        const currentScrollY = window.scrollY;
+        const navRect = mainNav.getBoundingClientRect();
+        const navBottom = navRect.bottom + currentScrollY;
+        
+        // Find all white background elements (cards, sections with white bg)
+        const whiteBackgroundElements = document.querySelectorAll(
+            '.team-card, .progress-card, .document-category, .document-item, ' +
+            '.product-timeline-content, .home-timeline-item, .card-content'
+        );
+        
+        let isOverWhiteBackground = false;
+        
+        // Check if nav is overlapping with any white background element
+        whiteBackgroundElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const elementTop = rect.top + currentScrollY;
+            const elementBottom = elementTop + rect.height;
+            
+            // Check if nav bottom is within white element bounds
+            if (navBottom >= elementTop && navBottom <= elementBottom) {
+                isOverWhiteBackground = true;
+            }
+        });
+        
+        // Add scrolled class if scrolled down or over white background
+        if (currentScrollY > 50 || isOverWhiteBackground) {
+            if (!mainNav.classList.contains('scrolled')) {
+                mainNav.classList.add('scrolled');
+            }
+        } else {
+            if (mainNav.classList.contains('scrolled')) {
+                mainNav.classList.remove('scrolled');
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+    }
+    
+    window.addEventListener('scroll', () => {
         // Use requestAnimationFrame for smoother scroll handling
         if (scrollTimer !== null) {
             cancelAnimationFrame(scrollTimer);
         }
         
-        scrollTimer = requestAnimationFrame(() => {
-            if (mainNav) {
-                if (currentScrollY > 50) {
-                    if (!mainNav.classList.contains('scrolled')) {
-                        mainNav.classList.add('scrolled');
-                    }
-                } else {
-                    if (mainNav.classList.contains('scrolled')) {
-                        mainNav.classList.remove('scrolled');
-                    }
-                }
-            }
-            lastScrollY = currentScrollY;
-        });
+        scrollTimer = requestAnimationFrame(checkNavBackground);
     }, { passive: true });
+    
+    // Initial check
+    checkNavBackground();
     
     // Add click event listeners to nav links
     navLinks.forEach(link => {
