@@ -376,18 +376,8 @@ function updateGreeting() {
 // Call on page load
 updateGreeting();
 
-// Add parallax effect to header on scroll (only on members page)
-window.addEventListener('scroll', function() {
-    const membersSection = document.getElementById('members-section');
-    if (membersSection && membersSection.classList.contains('active')) {
-        const scrolled = window.pageYOffset;
-        const header = membersSection.querySelector('.header');
-        if (header) {
-            header.style.transform = `translateY(${scrolled * 0.5}px)`;
-            header.style.opacity = 1 - (scrolled / 500);
-        }
-    }
-});
+// Header stays visible and beautiful when scrolling
+// Removed parallax effect that was hiding the header
 
 
 // Add CSS for ripple effect dynamically
