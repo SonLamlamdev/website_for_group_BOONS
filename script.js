@@ -18,11 +18,37 @@ function initNavigation() {
     // Detect when scrolling over white background sections
     let scrollTimer = null;
     let lastScrollY = window.scrollY;
+    let isNavHidden = false; // Track if nav is manually hidden
+    
+    // Close button functionality
+    const navCloseBtn = document.getElementById('navCloseBtn');
+    if (navCloseBtn) {
+        navCloseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (mainNav) {
+                mainNav.classList.add('hidden');
+                isNavHidden = true;
+            }
+        });
+    }
     
     function checkNavBackground() {
         if (!mainNav) return;
         
         const currentScrollY = window.scrollY;
+        
+        // If scrolled back to top, show nav again
+        if (currentScrollY < 100 && isNavHidden) {
+            mainNav.classList.remove('hidden');
+            isNavHidden = false;
+        }
+        
+        // Don't update scrolled class if nav is hidden
+        if (isNavHidden && currentScrollY < 100) {
+            return;
+        }
+        
         const navRect = mainNav.getBoundingClientRect();
         const navBottom = navRect.bottom + currentScrollY;
         
