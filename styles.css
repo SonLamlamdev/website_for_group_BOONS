@@ -79,23 +79,65 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     color: #fff;
     font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     align-items: center;
     justify-content: center;
     z-index: 101;
+    opacity: 0;
+    animation: fadeInScale 0.4s ease forwards;
 }
 
 .nav-close-btn:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.15) rotate(90deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-close-btn:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 .main-nav.scrolled .nav-close-btn {
     display: flex;
+    background: linear-gradient(135deg, #6B4DFF 0%, #9A70FF 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(107, 77, 255, 0.4);
+    animation: fadeInScale 0.4s ease forwards, pulse 2s ease-in-out infinite;
+}
+
+.main-nav.scrolled .nav-close-btn:hover {
+    background: linear-gradient(135deg, #5a3de8 0%, #8a60e8 100%);
+    transform: translateY(-50%) scale(1.2) rotate(90deg);
+    box-shadow: 0 6px 20px rgba(107, 77, 255, 0.6);
 }
 
 .main-nav.scrolled .nav-close-btn i {
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.main-nav.scrolled .nav-close-btn:hover i {
+    transform: rotate(180deg);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(107, 77, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(107, 77, 255, 0.6);
+    }
 }
 
 .main-nav.scrolled {
