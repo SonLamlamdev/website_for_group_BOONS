@@ -1978,6 +1978,19 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
         margin-bottom: 20px;
     }
 
+    .team-photo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .team-photo-gallery-item {
+        max-width: 120px;
+    }
+
+    .team-photo-gallery-overlay i {
+        font-size: 1.2rem;
+    }
+
     .home-preview-item {
         aspect-ratio: 16/9;
     }
@@ -2420,6 +2433,65 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     color: #666;
     line-height: 1.8;
     margin-bottom: 30px;
+}
+
+.team-photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.team-photo-gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    aspect-ratio: 4/3;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.team-photo-gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.team-photo-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.team-photo-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.team-photo-gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(107, 77, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #fff;
+}
+
+.team-photo-gallery-item:hover .team-photo-gallery-overlay {
+    opacity: 1;
+}
+
+.team-photo-gallery-overlay i {
+    font-size: 1.5rem;
 }
 
 .practice-gallery {
