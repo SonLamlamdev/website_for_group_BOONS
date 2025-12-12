@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #6B4DFF 0%, #9A70FF 100%);
     border: none;
     border-radius: 50%;
     width: 35px;
@@ -85,12 +85,13 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     z-index: 101;
     opacity: 0;
     animation: fadeInScale 0.4s ease forwards;
+    box-shadow: 0 4px 15px rgba(107, 77, 255, 0.4);
 }
 
 .nav-close-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #5a3de8 0%, #8a60e8 100%);
     transform: translateY(-50%) scale(1.15) rotate(90deg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(107, 77, 255, 0.6);
 }
 
 .nav-close-btn:active {
