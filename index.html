@@ -19,8 +19,8 @@
                 <li><a href="#" class="nav-link" data-tab="members">Thành viên</a></li>
                 <li><a href="#" class="nav-link" data-tab="products">Sản phẩm</a></li>
                 <li><a href="#" class="nav-link" data-tab="practice">Thực hành</a></li>
-                <li><a href="#" class="nav-link" data-tab="progress">Tiến độ</a></li>
-                <li><a href="#" class="nav-link" data-tab="documents">Biên bản</a></li>
+                <li><a href="#" class="nav-link" data-tab="progress">Biên bản Thành Lập</a></li>
+                <li><a href="#" class="nav-link" data-tab="documents">Báo cáo và Quản lí</a></li>
             </ul>
         </nav>
 
@@ -50,7 +50,7 @@
                 </div>
             </header>
 
-            <!-- Main Timeline Section: Thành Viên - Sản phẩm - Biên bản - Tiến độ -->
+            <!-- Main Timeline Section: Thành Viên - Sản phẩm - Báo cáo và Quản lí - Biên bản Thành Lập -->
             <div class="home-timeline-section">
                 <h2 class="section-title" style="color: #fff !important; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);">Dự Án Của Chúng Tôi</h2>
                 
@@ -128,30 +128,30 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 3: Biên bản -->
+                <!-- Timeline Item 3: Báo cáo và Quản lí -->
                 <div class="home-timeline-item" onclick="switchToTab('documents')">
                     <div class="home-timeline-icon">
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div class="home-timeline-content">
                         <div class="home-timeline-number">03</div>
-                        <h3 class="home-timeline-title">Biên Bản</h3>
+                        <h3 class="home-timeline-title">Báo Cáo và Quản Lí</h3>
                         <p class="home-timeline-description">
-                            Các biên bản họp nhóm và tài liệu kế hoạch dự án. Xem chi tiết quá trình làm việc và các quyết định quan trọng của nhóm.
+                            Các báo cáo họp nhóm, slide báo cáo và tài liệu quản lí dự án. Xem chi tiết quá trình làm việc và các quyết định quan trọng của nhóm.
                         </p>
                         <div class="home-timeline-preview">
                             <div class="home-documents-preview">
                                 <div class="home-doc-preview-item">
-                                    <i class="fas fa-file-pdf"></i>
-                                    <span>Biên bản họp lần 1</span>
-                                </div>
-                                <div class="home-doc-preview-item">
-                                    <i class="fas fa-file-word"></i>
-                                    <span>Biên bản họp lần 2-6</span>
-                                </div>
-                                <div class="home-doc-preview-item">
                                     <i class="fas fa-file-alt"></i>
-                                    <span>Tài liệu kế hoạch</span>
+                                    <span>Báo cáo họp nhóm</span>
+                                </div>
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                    <span>Slide báo cáo</span>
+                                </div>
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>Tài liệu quản lí</span>
                                 </div>
                             </div>
                         </div>
@@ -161,39 +161,32 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 4: Tiến độ -->
+                <!-- Timeline Item 4: Biên bản Thành Lập -->
                 <div class="home-timeline-item" onclick="switchToTab('progress')">
                     <div class="home-timeline-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-file-signature"></i>
                     </div>
                     <div class="home-timeline-content">
                         <div class="home-timeline-number">04</div>
-                        <h3 class="home-timeline-title">Tiến Độ</h3>
+                        <h3 class="home-timeline-title">Biên Bản Thành Lập</h3>
                         <p class="home-timeline-description">
-                            Theo dõi tiến độ dự án, phân công công việc và hình ảnh họp nhóm. Cập nhật liên tục về tiến trình thực hiện dự án.
+                            Hợp đồng thành lập nhóm và bảng kế hoạch dự án. Xem các tài liệu quan trọng về việc thành lập và kế hoạch ban đầu của nhóm.
                         </p>
                         <div class="home-timeline-preview">
-                            <div class="home-progress-preview">
-                                <div class="home-progress-item">
-                                    <i class="fas fa-tasks"></i>
-                                    <span>Bảng phân công</span>
+                            <div class="home-documents-preview">
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-file-contract"></i>
+                                    <span>Hợp đồng thành lập</span>
                                 </div>
-                                <div class="home-progress-item">
-                                    <i class="fas fa-chart-gantt"></i>
-                                    <span>Gantt Chart</span>
-                                </div>
-                                <div class="home-progress-item">
-                                    <i class="fas fa-images"></i>
-                                    <span>Hình ảnh họp nhóm</span>
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Bảng kế hoạch</span>
                                 </div>
                             </div>
                         </div>
                         <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('progress'); return false;">
                             Xem chi tiết <i class="fas fa-arrow-right"></i>
                         </a>
-                    </div>
-                    <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); switchToTab('progress')">
-                        <img src="wrap to web/progress/minh_chung/progress_online_meet.png" alt="Tiến độ họp nhóm">
                     </div>
                 </div>
             </div>
@@ -555,7 +548,7 @@
             <header class="header">
                 <div class="header-content">
                     <h1 class="header-title">Hoạt Động Thực Hành</h1>
-                    <p class="header-subtitle">Các hoạt động thực hành của nhóm</p>
+                    <p class="header-subtitle">Các hoạt động thực hành trên lớp của nhóm</p>
                 </div>
             </header>
 
@@ -670,125 +663,145 @@
         <section id="progress-section" class="content-section">
             <header class="header">
                 <div class="header-content">
-                    <h1 class="header-title">Tiến Độ Dự Án</h1>
-                    <p class="header-subtitle">Theo dõi tiến độ và phân công công việc</p>
-                </div>
-            </header>
-
-            <div class="progress-container">
-                <div class="progress-card">
-                    <div class="progress-icon">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <h3>Bảng Phân Công Nhiệm Vụ</h3>
-                    <p>Theo dõi và quản lý phân công công việc cho từng thành viên</p>
-                    <a href="https://docs.google.com/spreadsheets/d/1M3xGpinEtrwIlM2rzZXS50vPeg9K2rrHa4nLw4jTOP8/edit?usp=drive_link" target="_blank" class="progress-link">
-                        <i class="fas fa-external-link-alt"></i> Xem bảng phân công
-                    </a>
-                </div>
-
-                <div class="progress-card">
-                    <div class="progress-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Gantt Chart</h3>
-                    <p>Biểu đồ tiến độ dự án theo thời gian</p>
-                    <a href="https://docs.google.com/spreadsheets/d/1HHLXaV-m01GsgW4ADCoPEpuJx0KVs9pD/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" target="_blank" class="progress-link">
-                        <i class="fas fa-external-link-alt"></i> Xem Gantt Chart
-                    </a>
-                </div>
-
-                <div class="progress-card" id="meeting-progress-card" style="cursor: pointer;">
-                    <div class="progress-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Minh Chứng Họp Nhóm</h3>
-                    <p>Hình ảnh và ghi chú từ các buổi họp nhóm</p>
-                    <div class="progress-image">
-                        <img src="wrap to web/progress/minh_chung/progress_online_meet.png" alt="Minh chứng họp nhóm">
-                    </div>
-                    <div style="margin-top: 20px;">
-                        <button class="view-gallery-btn">
-                            <i class="fas fa-images"></i> Xem tất cả hình ảnh
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Documents Page Section -->
-        <section id="documents-section" class="content-section">
-            <header class="header">
-                <div class="header-content">
-                    <h1 class="header-title">Biên Bản & Tài Liệu</h1>
-                    <p class="header-subtitle">Các biên bản họp nhóm và tài liệu dự án</p>
+                    <h1 class="header-title">Biên Bản Thành Lập</h1>
+                    <p class="header-subtitle">Hợp đồng thành lập nhóm và bảng kế hoạch dự án</p>
                 </div>
             </header>
 
             <div class="documents-container">
                 <div class="document-category">
                     <h2 class="document-category-title">
-                        <i class="fas fa-file-contract"></i> Biên Bản Họp Nhóm
+                        <i class="fas fa-file-signature"></i> Tài Liệu Thành Lập
                     </h2>
                     <div class="document-list">
                         <div class="document-item">
-                            <i class="fas fa-file-pdf"></i>
+                            <i class="fas fa-file-contract"></i>
                             <div class="document-info">
-                                <h3>Hợp đồng thành lập nhóm và biên bản họp lần 1</h3>
+                                <h3>Hợp đồng thành lập nhóm</h3>
                                 <p>PDF Document</p>
                             </div>
-                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Hợp đồng thành lập nhóm và biên bản họp lần 1.pdf" target="_blank" class="document-link">
-                                <i class="fas fa-download"></i> Tải xuống
+                            <a href="https://drive.google.com/file/d/1KmMA4Jxtl4V5WG_gZjai3WKDtBwMmYDo/view?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div class="document-info">
+                                <h3>Bảng kế hoạch</h3>
+                                <p>Online Document</p>
+                            </div>
+                            <a href="https://drive.google.com/drive/folders/1PHMEtLmTg3K46tgZtgDqF4lL76JgHMKH?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documents Page Section (Báo cáo và Quản lí) -->
+        <section id="documents-section" class="content-section">
+            <header class="header">
+                <div class="header-content">
+                    <h1 class="header-title">Báo Cáo và Quản Lí</h1>
+                    <p class="header-subtitle">Các báo cáo họp nhóm, slide báo cáo và tài liệu quản lí dự án</p>
+                </div>
+            </header>
+
+            <div class="documents-container">
+                <div class="document-category">
+                    <h2 class="document-category-title">
+                        <i class="fas fa-file-alt"></i> Báo Cáo
+                    </h2>
+                    <div class="document-list">
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biên bản họp nhóm lần 2</h3>
+                                <p>Online Document</p>
+                            </div>
+                            <a href="https://docs.google.com/document/d/1m_f3Z-PG7btkeYrvsm6Cg8RRuJKkwgSp/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
                         <div class="document-item">
                             <i class="fas fa-file-word"></i>
                             <div class="document-info">
-                                <h3>Biên bản họp lần 2</h3>
-                                <p>Word Document</p>
+                                <h3>Biên bản họp nhóm lần 3</h3>
+                                <p>Online Document</p>
                             </div>
-                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp lần 2.docx" target="_blank" class="document-link">
-                                <i class="fas fa-download"></i> Tải xuống
-                            </a>
-                        </div>
-                        <div class="document-item">
-                            <i class="fas fa-file-word"></i>
-                            <div class="document-info">
-                                <h3>Biên bản họp lần 3</h3>
-                                <p>Word Document</p>
-                            </div>
-                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp lần 3.docx" target="_blank" class="document-link">
-                                <i class="fas fa-download"></i> Tải xuống
+                            <a href="https://docs.google.com/document/d/1vSr4kaT3IYKpmCxgOx44GDLyRWzOR3_a/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
                         <div class="document-item">
                             <i class="fas fa-file-word"></i>
                             <div class="document-info">
                                 <h3>Biên bản họp nhóm lần 4</h3>
-                                <p>Word Document</p>
+                                <p>Online Document</p>
                             </div>
-                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp nhóm lần 4.docx" target="_blank" class="document-link">
-                                <i class="fas fa-download"></i> Tải xuống
+                            <a href="https://docs.google.com/document/d/1mHGMaCxRu3p2Y9sEf0IlvrkR6935DF13ULWDK9FAobg/edit?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
                         <div class="document-item">
                             <i class="fas fa-file-word"></i>
                             <div class="document-info">
                                 <h3>Biên bản họp nhóm lần 5</h3>
-                                <p>Word Document</p>
+                                <p>Online Document</p>
                             </div>
-                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp nhóm lần 5.docx" target="_blank" class="document-link">
-                                <i class="fas fa-download"></i> Tải xuống
+                            <a href="https://docs.google.com/document/d/1Rqe0RlUfn-UKIkaMTW4x4PJrnkO_J5y4go9AzZv53YU/edit?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
                         <div class="document-item">
                             <i class="fas fa-file-word"></i>
                             <div class="document-info">
                                 <h3>Biên bản họp nhóm lần 6</h3>
-                                <p>Word Document</p>
+                                <p>Online Document</p>
                             </div>
-                            <a href="wrap to web/form/Biên bản họp nhóm-20251207T094711Z-1-001/Biên bản họp nhóm/Biên bản họp nhóm lần 6.docx" target="_blank" class="document-link">
-                                <i class="fas fa-download"></i> Tải xuống
+                            <a href="https://docs.google.com/document/d/1q09RgsCJWyApGWjIXk7ZYBqZDOb5H6ZClYfXpM4-Rjo/edit?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-word"></i>
+                            <div class="document-info">
+                                <h3>Biên bản họp nhóm lần 7</h3>
+                                <p>Online Document</p>
+                            </div>
+                            <a href="https://docs.google.com/document/d/1JIQ70YbvtljrcCunm7QCtmYjavHHG77dRCoy4FqQvZk/edit?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="document-info">
+                                <h3>Cuốn báo cáo</h3>
+                                <p>PDF Document</p>
+                            </div>
+                            <a href="https://docs.google.com/document/d/1Zz2u40xg9D9Ek4BzRs31tjXGibRT3dNP/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-powerpoint"></i>
+                            <div class="document-info">
+                                <h3>Slide báo cáo</h3>
+                                <p>Presentation</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1nDcoIzXAaO_8afqKCrj7cq8WDQP9Hefd/view?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
+                            </a>
+                        </div>
+                        <div class="document-item">
+                            <i class="fas fa-file-powerpoint"></i>
+                            <div class="document-info">
+                                <h3>Slide báo cáo 2</h3>
+                                <p>Presentation</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1jJYE6oFuIxAE5XbrhcovqZfNjxkXL-M9/view?usp=drive_link" target="_blank" class="document-link">
+                                <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
                     </div>
@@ -796,36 +809,36 @@
 
                 <div class="document-category">
                     <h2 class="document-category-title">
-                        <i class="fas fa-file-alt"></i> Tài Liệu Kế Hoạch
+                        <i class="fas fa-chart-bar"></i> Quản Lí
                     </h2>
                     <div class="document-list">
                         <div class="document-item">
-                            <i class="fas fa-file-word"></i>
+                            <i class="fas fa-file-excel"></i>
                             <div class="document-info">
-                                <h3>Bảng kế hoạch</h3>
-                                <p>Online Document</p>
+                                <h3>Kế hoạch tài chính</h3>
+                                <p>Spreadsheet</p>
                             </div>
-                            <a href="https://docs.google.com/document/d/13eTWZKlI2omTJtltQgRMGFpgXm8GrXot/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" id="doc-plan-1" target="_blank" class="document-link">
+                            <a href="https://docs.google.com/spreadsheets/d/1Rjb2JXKylBJoxq5vFoJ914oiF2C2GFGzC2mmmrnNRX8/edit?usp=drive_link" target="_blank" class="document-link">
                                 <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
                         <div class="document-item">
-                            <i class="fas fa-file-word"></i>
+                            <i class="fas fa-file-excel"></i>
                             <div class="document-info">
-                                <h3>Báo cáo tiến độ và minh chứng</h3>
-                                <p>Online Document</p>
+                                <h3>Phân công nhiệm vụ</h3>
+                                <p>Spreadsheet</p>
                             </div>
-                            <a href="https://docs.google.com/document/d/1UESKWYvd1TmUv1jP7KdLqsr3rKjEC8mA/edit?usp=drive_link&ouid=116810151199259145644&rtpof=true&sd=true" id="doc-plan-2" target="_blank" class="document-link">
+                            <a href="https://docs.google.com/spreadsheets/d/1M3xGpinEtrwIlM2rzZXS50vPeg9K2rrHa4nLw4jTOP8/edit?usp=drive_link" target="_blank" class="document-link">
                                 <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
                         <div class="document-item">
-                            <i class="fas fa-file-word"></i>
+                            <i class="fas fa-file-excel"></i>
                             <div class="document-info">
-                                <h3>Biểu mẫu tổng kết điểm</h3>
-                                <p>Online Document</p>
+                                <h3>Tổng kết điểm</h3>
+                                <p>Spreadsheet</p>
                             </div>
-                            <a href="#" id="doc-plan-3" target="_blank" class="document-link">
+                            <a href="https://onedrive.live.com/:x:/g/personal/2BFE7AEF5AD65545/IQDOJdqLtSu1SqRzfAR0i15oATTYCTlhPEcin5I6pMdBsQk?resid=2BFE7AEF5AD65545!s8bda25ce2bb54ab5a4737c04748b5e68&ithint=file%2Cxlsx&fbclid=IwY2xjawOoe99leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA80Mzc2MjYzMTY5NzM3ODgAAR5lc2mf5_yTDjISFI1_YUPCsoLRzaRop9IQUNzQlVYwt5Nl2j1e5EltCOOf0g_aem_Bj3xptzODxYiTzY0VnEy4A&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy8yYmZlN2FlZjVhZDY1NTQ1L0lRRE9KZHFMdFN1MVNxUnpmQVIwaTE1b0FUVFlDVGxoUEVjaW41STZwTWRCc1FrP2ZiY2xpZD1Jd1kyeGphd09vZTk5bGVIUnVBMkZsYlFJeE1RQnpjblJqQm1Gd2NGOXBaQTgwTXpjMk1qWXpNVFk1TnpNM09EZ0FBUjVsYzJtZjVfeVREaklTRkkxX1lVUENzb0xSemFSb3A5SVFVTnpRbFZZd3Q1TmwyajFlNUVsdENPT2Y0Z19hZW1fQmozeHB0ek9EeFlpVHpZMFZuRXk0QQ" target="_blank" class="document-link">
                                 <i class="fas fa-external-link-alt"></i> Xem tài liệu
                             </a>
                         </div>
