@@ -18,7 +18,7 @@
                 <li><a href="#" class="nav-link active" data-tab="home">Trang chủ</a></li>
                 <li><a href="#" class="nav-link" data-tab="members">Thành viên</a></li>
                 <li><a href="#" class="nav-link" data-tab="products">Sản phẩm</a></li>
-                <li><a href="#" class="nav-link" data-tab="practice">Thực hành</a></li>
+                <li><a href="#" class="nav-link" data-tab="practice">Hoạt động thực hành</a></li>
                 <li><a href="#" class="nav-link" data-tab="progress">Biên bản Thành Lập</a></li>
                 <li><a href="#" class="nav-link" data-tab="documents">Báo cáo và Quản lí</a></li>
             </ul>
@@ -128,13 +128,49 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 3: Báo cáo và Quản lí -->
+                <!-- Timeline Item 3: Hoạt động thực hành -->
+                <div class="home-timeline-item" onclick="switchToTab('practice')">
+                    <div class="home-timeline-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="home-timeline-content">
+                        <div class="home-timeline-number">03</div>
+                        <h3 class="home-timeline-title">Hoạt Động Thực Hành</h3>
+                        <p class="home-timeline-description">
+                            Các hoạt động thực hành trên lớp của nhóm. Xây cầu, thử thách quả trứng và vẽ mindmap ý tưởng - những trải nghiệm thực tế trong quá trình học tập.
+                        </p>
+                        <div class="home-timeline-preview">
+                            <div class="home-documents-preview">
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-bridge"></i>
+                                    <span>Xây Cầu</span>
+                                </div>
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-egg"></i>
+                                    <span>Thử Thách Quả Trứng</span>
+                                </div>
+                                <div class="home-doc-preview-item">
+                                    <i class="fas fa-project-diagram"></i>
+                                    <span>Vẽ Mindmap Ý Tưởng</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="home-timeline-link" onclick="event.preventDefault(); switchToTab('practice'); return false;">
+                            Xem chi tiết <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="home-timeline-image-wrapper" onclick="event.stopPropagation(); openProductImageModal('wrap to web/progress/Làm cầu cho chai nước-20251211T152309Z-1-001/Làm cầu cho chai nước/20251207_201542.jpg')">
+                        <img src="wrap to web/progress/Làm cầu cho chai nước-20251211T152309Z-1-001/Làm cầu cho chai nước/20251207_201542.jpg" alt="Hoạt động thực hành">
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4: Báo cáo và Quản lí -->
                 <div class="home-timeline-item" onclick="switchToTab('documents')">
                     <div class="home-timeline-icon">
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">03</div>
+                        <div class="home-timeline-number">04</div>
                         <h3 class="home-timeline-title">Báo Cáo và Quản Lí</h3>
                         <p class="home-timeline-description">
                             Các báo cáo họp nhóm, slide báo cáo và tài liệu quản lí dự án. Xem chi tiết quá trình làm việc và các quyết định quan trọng của nhóm.
@@ -161,13 +197,13 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 4: Biên bản Thành Lập -->
+                <!-- Timeline Item 5: Biên bản Thành Lập -->
                 <div class="home-timeline-item" onclick="switchToTab('progress')">
                     <div class="home-timeline-icon">
                         <i class="fas fa-file-signature"></i>
                     </div>
                     <div class="home-timeline-content">
-                        <div class="home-timeline-number">04</div>
+                        <div class="home-timeline-number">05</div>
                         <h3 class="home-timeline-title">Biên Bản Thành Lập</h3>
                         <p class="home-timeline-description">
                             Hợp đồng thành lập nhóm và bảng kế hoạch dự án. Xem các tài liệu quan trọng về việc thành lập và kế hoạch ban đầu của nhóm.
