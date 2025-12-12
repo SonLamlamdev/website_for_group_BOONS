@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 12px 25px;
+    padding: 14px 30px;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.2);
     position: sticky;
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     will-change: background-color, box-shadow, border-color;
     backface-visibility: hidden;
     transform: translateZ(0);
-    max-width: 1600px;
+    max-width: 1800px;
     width: 100%;
 }
 
@@ -149,7 +149,7 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -167,10 +167,10 @@ h1, h2, h3, h4, h5, h6, .header-title, .home-timeline-title, .product-timeline-t
 .nav-link {
     color: #fff;
     text-decoration: none;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
-    padding: 12px 20px;
+    padding: 14px 24px;
     border-radius: 12px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
